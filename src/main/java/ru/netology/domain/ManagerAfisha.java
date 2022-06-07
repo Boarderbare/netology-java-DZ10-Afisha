@@ -9,41 +9,42 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class ManagerAfisha {
-    private Movie[] movies = new Movie[0];
+    private MovieRepository repo;
     private int limit = 10;
-
-    public ManagerAfisha(int limit) {
+    private ManagerAfisha(int limit, MovieRepository repo) {
+        this.repo = repo;
         this.limit = limit;
     }
 
-    public void addMovie(Movie movie) {
-        int length = movies.length + 1;
-        Movie[] tmp = new Movie[length];
-        for (int i = 0; i < movies.length; i++) {
-            tmp[i] = movies[i];
-        }
-        int lastIndex = tmp.length - 1;
-        tmp[lastIndex] = movie;
-        movies = tmp;
+//    public ManagerAfisha(int limit) {
+//        this.limit = limit;
+//    }
+
+    public void add(Movie movie) {
+        repo.save(movie);
     }
 
-    public Movie[] findAll() {
-        Movie[] result = new Movie[movies.length];
-        System.arraycopy(movies, 0, result, 0, movies.length);
-        return result;
+    public Movie find(int id) {
+        return repo.findById(id);
+    }
+
+    public Movie[] all() {
+        return repo.findAll();
     }
 
     public Movie[] findLast() {
+        int length = all().length;
         int resultLenght;
-        if (limit > movies.length) {
-            resultLenght = movies.length;
+        if (limit > length) {
+            resultLenght = length;
         } else {
             resultLenght = limit;
         }
+        Movie[] tmp = all();
         Movie[] result = new Movie[resultLenght];
         for (int i = 0; i < resultLenght; i++) {
-            int index = movies.length - i - 1;
-            result[i] = movies[index];
+            int index = length - i - 1;
+            result[i] = tmp[index];
         }
         return result;
     }
