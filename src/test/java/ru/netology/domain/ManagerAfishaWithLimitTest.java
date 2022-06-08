@@ -12,12 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
-@ExtendWith(MockitoExtension.class)
 
-public class ManagerAfishaWithLimitTest {
-@Mock
-    private MovieRepository repository;
-@InjectMocks
+public class ManagerAfishaWithLimitTest{
+    private MovieRepository repository = Mockito.mock(MovieRepository.class);
     private ManagerAfisha manager = new ManagerAfisha(repository, 3);
 
     private Movie first = new Movie(1, "Pulp Fiction", 1994);
