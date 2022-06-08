@@ -22,13 +22,6 @@ public class ManagerAfishaWithLimitTest{
     private Movie third = new Movie(3, "Psycho", 1960);
     private Movie fourth = new Movie(4, "Interstellar", 2014);
 
-    @BeforeEach
-    public void setUp() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
-    }
 
     @Test
     public void shouldGetLastMovieWithLimitManual() {

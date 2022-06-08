@@ -16,9 +16,6 @@ public class ManagerAfisha {
         this.limit = limit;
     }
 
-//    public ManagerAfisha(int limit) {
-//        this.limit = limit;
-//    }
 
     public void add(Movie movie) {
         repo.save(movie);
@@ -33,14 +30,14 @@ public class ManagerAfisha {
     }
 
     public Movie[] findLast() {
-        int length = all().length;
+        int length = repo.findAll().length;
         int resultLenght;
         if (limit > length) {
             resultLenght = length;
         } else {
             resultLenght = limit;
         }
-        Movie[] tmp = all();
+        Movie[] tmp = repo.findAll();
         Movie[] result = new Movie[resultLenght];
         for (int i = 0; i < resultLenght; i++) {
             int index = length - i - 1;
