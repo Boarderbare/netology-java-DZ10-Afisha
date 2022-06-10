@@ -9,8 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 
 public class ManagerAfishaWithLimitTest{
@@ -32,6 +31,6 @@ public class ManagerAfishaWithLimitTest{
         Movie[] expected = new Movie[]{fourth, third, second};
         assertArrayEquals(actual, expected);
 
-        verify(repository).findAll();
+        verify(repository, times(2)).findAll();
     }
 }

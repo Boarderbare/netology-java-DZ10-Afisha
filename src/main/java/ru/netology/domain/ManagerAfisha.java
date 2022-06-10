@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class ManagerAfisha {
-    private MovieRepository repo;
+    private MovieRepository repo = new MovieRepository();
     private int limit = 10;
     private ManagerAfisha(int limit, MovieRepository repo) {
         this.repo = repo;
